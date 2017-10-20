@@ -9,18 +9,19 @@ import numpy as np
 x_data = np.random.rand(100).astype(np.float32)
 y_data = x_data*0.2+ 0.4
 
-# models
+# model, Weights and biases are the target number for learning
 Weights = tf.Variable(tf.random_uniform([1], -1.0, 1.0))
 biases = tf.Variable(tf.zeros([1]))
 y = Weights * x_data + biases
 
-# loss
+# loss. The goal is to reduce loss after trained
 loss = tf.reduce_mean(tf.square(y-y_data))
 optimizer = tf.train.GradientDescentOptimizer(0.5)
 train = optimizer.minimize(loss)
 
-# train
-init = tf.global_variables_initializer()
+# init
+# tf.initianliza_all_variables() # tensorflow < 0.12
+init = tf.global_variables_initializer() # tensorflow >= 0.12
 
 # run
 sess = tf.Session()
