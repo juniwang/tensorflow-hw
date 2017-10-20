@@ -102,3 +102,5 @@ ENV/
 
 
 logs/
+MINST_data/
+MNIST_data/
